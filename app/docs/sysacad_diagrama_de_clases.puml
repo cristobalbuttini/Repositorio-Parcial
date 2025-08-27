@@ -1,0 +1,134 @@
+@startuml Diagrama de Clases de sysacad
+package "Sistema Académico"{
+    package "Personas"{
+        class usuario{
+            - username: str
+            - password: str
+            -activated: bool
+        }
+        class Alumno {
+            - apellido: str
+            - nombre: str
+            - nroDocumento: str
+            - tipoDocumento: TipoDocumento
+            - fechaNacimiento: str
+            // “M”= Masculino, “F”=Femenino
+            - sexo: str
+            - nroLegajo: int
+            - fechaIngreso: date
+        }
+
+        enum TipoDocumento {
+            DNI
+            LibretaCivica
+            LibretaEnrolamiento
+            Pasaporte
+        }
+    }
+
+    class Universidad {
+        -id: int
+        -nombre: str
+        -sigla: str
+    }
+
+    class Facultad {
+        -id: int
+        -nombre: str
+        -abreviatura: str
+        -directorio: str
+        -sigla: str
+        -codigoPostal: str
+        -ciudad: str
+        -domicilio: str
+        -telefono: str
+        -contacto: str
+        -email: str
+    }
+
+    class Autoridad {
+        -nombre: str
+        -cargo: str
+        -telefono: str
+        -email: str
+    }
+
+    class Area {
+        - nombre: str
+    }
+
+    class Especialidad {
+        - nombre: str
+        - letra: str
+        - observacion: str
+    }
+
+    class TipoEspecialidad {
+        - nombre: str
+        - Nivel: str
+    }
+
+    class Grupo {
+        - id: int
+        - nombre: str
+    }
+
+    class Plan {
+        - nombre: str
+        - fechaInicio: str
+        - fechaFin: str
+        - observacion: str
+    }
+
+    class Orientacion {
+        - id: int
+        - nombre: str
+        - description: str
+    }
+
+    class Grado {
+        - nombre: str
+    }
+
+    class Cargo {
+        - id: int
+        - nombre: str
+        - puntos: int
+        
+    }
+    
+    class CategoriaCargo {
+        - nombre: str
+    } 
+   
+    class Materia {
+        - idMateria: int
+        - nombre: str
+        - codigo: str
+        - observacion: str
+    }
+
+    class TipoDedicacion {
+        - nombre: str
+        - observacion: str
+    }
+
+    class Departamento {
+        - id :int
+        - nombre: str
+        - description : str
+    }
+
+    usuario -- Alumno
+    Orientacion -- Especialidad
+    Especialidad -- TipoEspecialidad
+    Orientacion -- Plan
+    Orientacion -- Materia
+    Autoridad -- Materia
+    Facultad -- Universidad
+    Facultad <-- Autoridad
+    Cargo -- Autoridad
+    Cargo -- CategoriaCargo
+    Cargo -- TipoDedicacion
+}
+@enduml
