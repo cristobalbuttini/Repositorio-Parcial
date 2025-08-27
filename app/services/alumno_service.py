@@ -35,4 +35,10 @@ class AlumnoService:
     def borrar_alumno_id(alumno_id):
         return AlumnoRepository.borrar_alumno_id(alumno_id)
     
+    #Agrego funcionalidad para justificar el principio Open Close de SOLID
+
+    @staticmethod
+    def borrar_alumno_dni (alumno_dni):
+        return AlumnoRepository.borrar_alumno_dni(alumno_dni)
+    
     

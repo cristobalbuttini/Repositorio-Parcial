@@ -44,3 +44,15 @@ class AlumnoRepository:
             db.session.delete(alumno)
             db.session.commit()
         return True
+    
+
+
+    # Modificacion para Open close en SOLID
+    @staticmethod
+    def borrar_alumno_dni(alumno_dni):
+        """Elimina un alumno por su DNI"""
+        alumno = AlumnoRepository.buscar_alumno_documento(alumno_dni)
+        if alumno:
+            db.session.delete(alumno)
+            db.session.commit()
+        return True
